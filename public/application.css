@@ -1,0 +1,39 @@
+.input-color {
+    /*position: relative;*/
+    /*border-radius: 100%;*/
+}
+/*.input-color input {
+    padding-left: 20px;
+}
+.input-color .color-box {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}*/
+
+.game-container {
+  border-radius: 100%;
+}
+
+#top-left {
+  background-color: #33cc33;
+  padding: 5em;
+}
+
+#top-right {
+  background-color: red;
+  padding: 5em;
+}
+
+#bottom-left {
+  background-color: yellow;
+  padding: 5em;
+}
+
+#bottom-right {
+  background-color: blue;
+  padding: 5em;
+}

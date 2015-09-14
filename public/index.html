@@ -3,98 +3,286 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello React</title>
+    <title>React-tion</title>
+    <link rel="stylesheet" type="text/css" href="application.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
   <body>
-    <div id="content"></div>
-    <script type="text/jsx">
-      var SearchBar = React.createClass({
-        wumpus: function() {
-          this.props.onUserInput(
-            this.refs.filterTextInput.getDOMNode().value
+  <div id="content"></div>
+
+  <script type="text/jsx">
+
+     // var GameTitle = React.createClass({
+     //    render: function() {
+     //      return <h1>React-tion</h1>;
+     //    }
+     //  });
+
+     // React.render(<GameTitle />, document.getElementById("content"));
+
+  var GameWrapper = React.createClass({
+      // getInitialState: function() {
+      //   return {
+      //     text: ""
+      //   };
+      // },
+      // handleChange: function(event) {
+      //   this.setState({ text: event.target.value })
+      // }
+      render: function() {
+        return (
+          <div class="game-container">
+
+           <h1>React-tion</h1>
+
+            <div class="input-color">
+              <button id="top-left"><div class="inner"></div>X</button>
+              <button id="top-right"><div class="inner"></div>X</button>
+            </div>
+
+            <div class="input-color">
+              <button id="bottom-left"><div class="inner">X</div></button>
+              <button id="bottom-right"><div class="inner">X</div></button>
+            </div>
+          </div>
           )
         },
+        var BoxButton = React.createClass({
+          var component = <Button clicked = {false} />;
+          props.clicked = false;
+          getInitialState: function() {
+          return { clicked: false };
+        },
+        handleClick: function (event) {
+          this.setState({ clicked: !this.state.clicked});
+        },
         render: function() {
-            return (
-                <form>
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    ref = "filterTextInput" //refering to filterTextImput
-                    onChange = {this.wumpus} />
-                </form>
-            );
-        }
-      });
-
-      var VideoRow = React.createClass({
-        render: function() {
-            ytLink = 'https://www.youtube.com/embed/' + this.props.video.videoID
-            return (
-                <tr>
-                    <td>{this.props.video.title}</td>
-                    <td><iframe width="560" height="315" src={ytLink} frameBorder="0" allowFullScreen></iframe></td>
-                </tr>
-                );
-            }
-        });
-
-
-
-      var VideoTable = React.createClass({
-        render: function() {
-          var rows = [];
-          console.log(this.props)
-          var filterText = this.props.filterText;
-          this.props.videos.forEach(function(video) {
-              if (video.title.toLowerCase().indexOf(this.props.filterText) === -1) { return;}
-              rows.push(<VideoRow video={video} key={video.name} />);
-          }.bind(this));
+          var text = this.state.clicked ? 'clicked' : 'not clicked';
           return (
-              <table>
-                  <tbody>{rows}</tbody>
-              </table>
+          <p onClick={this.handleClick}>
+            You {text} this. Click to toggle.
+          </p>
           );
         }
       });
+    });
 
+      React.render(
+        <GameWrapper />, document.body
+      );
 
-
-      var FilterableVideoTable = React.createClass({
-        handleUserInput: function(wumpus) {
-          this.setState({
-            filterText: wumpus
-          })
-        },
-        getInitialState: function() {
-          return {filterText: ''}
-        },
-        render: function() {
-            console.log(this.state)
-            //console.log(this.props)
-            return (
-                <div>
-                    <SearchBar
-                      filterText={this.state.filterText}
-                      onUserInput={this.handleUserInput} />
-                    <VideoTable videos={this.props.videos}
-
-                      filterText={this.state.filterText} />
-                </div>
-            );
-        }
-      });
-  var VIDEOS = [
-    {title: 'Sherif Talking',
-    videoID: '8ONf8SXbGZ4'},
-    {title: 'Cat Video',
-    videoID: 'tntOCGkgt98'}
-  ]
-    React.render(<FilterableVideoTable videos={VIDEOS} />, document.body);
     </script>
-
   </body>
 </html>
+      <!-- var BoxButton = React.createClass({
+        getInitialState: function() {
+        return { clicked: false };
+      },
+      handleClick: function (event) {
+        this.setState({ clicked: !this.state.clicked});
+      },
+      render: function() {
+        var text = this.state.clicked ? 'click' : 'not clicked';
+        return (
+        <p onClick={this.handleClick}>
+          You {text} this. Click to toggle.
+        </p>
+        );
+      }
+    });
+
+
+       //  var ButtonClick = React.createClass({
+       //    clickHandler: function (){
+       // setTimeout(this.props.onClick(),500);
+       //  },
+        // mouseDown: function(){
+        //   $(this.getDOMNode()).setState
+        // }
+      // mouseDown: function(){
+      // $(this.getDOMNode()).addClass('selected-side');
+      // },
+      // mouseUp: function(){
+      // $(this.getDOMNode()).removeClass('selected-side');
+      // },
+      // render: function(){
+      //   return (
+      //     <div class="clicker">P</div>
+      //     );
+      // return (
+      //   <div onClick={this.clickHandler}  onMouseDown={this.mouseDown} onMouseUp={this.mouseUp} className="input-color">
+      //   </div>
+      //   );
+    //   }
+    // }
+
+
+
+
+    //       $( "button" ).click(function() {
+    //   var inner = $("button");
+    //    inner.animate({
+    //      left: '100px'},
+    //      "slow");
+    // });
+     // var ChangeButton = ReactCreateClass({
+
+     // })
+
+
+
+
+    // React.render(<h1>React-tion </h1>, document.getElementById('content'));
+
+  //   var BoxLeftTop = React.createClass({
+  // clickHandler: function (){
+  //   $( "button" ).click(function(){
+
+  //   })
+
+  //   var BoxLeftTop = React.createClass({
+  //   clickHandler: function (){
+  //      setTimeout(this.props.onClick(),500);
+  //   },
+  //   mouseDown: function(){
+  //     $(this.getDOMNode()).addClass('selected-side');
+  //   },
+  //   mouseUp: function(){
+  //     $(this.getDOMNode()).removeClass('selected-side');
+  //   },
+  //   render: function(){
+  //     return (
+  //       <div onClick={this.clickHandler}  onMouseDown={this.mouseDown} onMouseUp={this.mouseUp} className="simonLeftTop simonLeftTopBaseColor simonBlock">
+  //       </div>
+  //     );
+  //   }
+  // });
+
+
+    // $(function() {
+    //   var state = true;
+    //   $( "button" ).click(function(){
+    //     if ( state ) {
+    //       $ ( "button" ).animate({
+    //         backgroundColor: "#aa0000"
+    //       }, 1000);
+    //     } else {
+    //       $ ( "button" ).animate({
+    //         backgroundColor:"#fff"
+    //       }, 1000);
+    //     }
+    //     state = !state;
+    //   });
+    // });
+
+
+    // var ReactTion = React.createClass({
+    //   getInitialState: function(){
+    //     return {
+
+    //     }
+    //   }
+    // });
+  // var GameWrapper = React.createClass({
+
+
+  //   incrementLeftTop: function(){
+  //     this.setState( { leftTop:  this.state.leftTop + 1 } );
+  //     this.setState({total: this.state.total + 1});
+  //     this.state.pressedSequence.push(1);
+  //     this.setState({pressedSequence: this.state.pressedSequence});
+  //     this.animationSelect(Constants.leftTopElementClass, Constants.leftTop, 0);
+  //     this.setSequenceValue();
+  //   },
+  // })
+
+
+  //
+
+      // var SearchBar = React.createClass({
+      //   wumpus: function() {
+      //     this.props.onUserInput(
+      //       this.refs.filterTextInput.getDOMNode().value
+      //     )
+      //   },
+      //   render: function() {
+      //       return (
+      //           <form>
+      //             <input
+      //               type="text"
+      //               placeholder="Search..."
+      //               ref = "filterTextInput" //refering to filterTextImput
+      //               onChange = {this.wumpus} />
+      //           </form>
+      //       );
+      //   }
+      // });
+
+      // var VideoRow = React.createClass({
+      //   render: function() {
+      //       ytLink = 'https://www.youtube.com/embed/' + this.props.video.videoID
+      //       return (
+      //           <tr>
+      //               <td>{this.props.video.title}</td>
+      //               <td><iframe width="560" height="315" src={ytLink} frameBorder="0" allowFullScreen></iframe></td>
+      //           </tr>
+      //           );
+      //       }
+      //   });
+
+
+
+      // var VideoTable = React.createClass({
+      //   render: function() {
+      //     var rows = [];
+      //     console.log(this.props)
+      //     var filterText = this.props.filterText;
+      //     this.props.videos.forEach(function(video) {
+      //         if (video.title.toLowerCase().indexOf(this.props.filterText) === -1) { return;}
+      //         rows.push(<VideoRow video={video} key={video.name} />);
+      //     }.bind(this));
+      //     return (
+      //         <table>
+      //             <tbody>{rows}</tbody>
+      //         </table>
+      //     );
+      //   }
+      // });
+
+
+
+  //     var FilterableVideoTable = React.createClass({
+  //       handleUserInput: function(wumpus) {
+  //         this.setState({
+  //           filterText: wumpus
+  //         })
+  //       },
+  //       getInitialState: function() {
+  //         return {filterText: ''}
+  //       },
+  //       render: function() {
+  //           console.log(this.state)
+  //           //console.log(this.props)
+  //           return (
+  //               <div>
+  //                   <SearchBar
+  //                     filterText={this.state.filterText}
+  //                     onUserInput={this.handleUserInput} />
+  //                   <VideoTable videos={this.props.videos}
+
+  //                     filterText={this.state.filterText} />
+  //               </div>
+  //           );
+  //       }
+  //     });
+  // var VIDEOS = [
+  //   {title: 'Sherif Talking',
+  //   videoID: '8ONf8SXbGZ4'},
+  //   {title: 'Cat Video',
+  //   videoID: 'tntOCGkgt98'}
+  // ]
+  //   React.render(<FilterableVideoTable videos={VIDEOS} />, document.body);
+
+ -->
