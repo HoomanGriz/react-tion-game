@@ -1,3 +1,2 @@
-Rails-React-Skeleton
-
+<h1>react-tion</h1>
 
