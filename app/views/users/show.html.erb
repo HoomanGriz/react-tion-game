@@ -1,0 +1,13 @@
+<div>
+  <h1>React-tion</h1>
+</div>
+</br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5">
+      <% @boxes.each do |box| %>
+        <div><button type="button" class="btn btn-primary btn-lg btn-block" href="#" role="button"><%= box.location %></button></div>
+      <% end%>
+    </div>
+  </div>
+</div>
